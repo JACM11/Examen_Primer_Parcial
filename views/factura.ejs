@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=PT+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Facturas</title>
+
+</head>
+
+<body>
+    <header class="site-header borde-inferior">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/panel">
+                    <h1 class="no-margin"><span>HOTEL</span></h1>
+                </a>
+                <a href="/panel">Panel de administración</a>
+            </div>
+        </div>
+    </header>
+    <section class="contenedor wrapper">
+        <div class="contenido-panel">
+            <div class="usuario">
+                <div class="imagen-usuario">
+                    <a href=""><img src="/img/1200px-User_icon_2.svg.png" alt=""></a>
+                </div>
+                <nav class="navegacion-usuario">
+                    <a href="/mensaje">Fecha</a>
+                    <a href="/cliente">Cliente</a>
+                    <a href="/habitacion">Habitacion</a>
+                    <a href="/tipoHabitacion">Dias</a>
+                    <a href="/reserva">Precio</a>
+                    <a href="/reserva">Por pagar</a>
+                </nav>
+            </div>
+            <div class="datos-panel">
+                <h2 class="centrar-texto">Facturas</h2>
+                <div class="tabla tabla-categoria">
+                    <div class="tabla-cat">
+                        <table class="">
+                            <tr>
+                                <th><strong></strong></th>
+                                <th><strong>Fecha</strong></th>
+                                <th><strong>Cliente</strong></th>
+                                <th><strong>Habitacion</strong></th>
+                                <th><strong>Dias</strong></th>
+                                <th><strong>Precio</strong></th>
+                                <th><strong>Por pagar</strong></th>
+
+                            </tr>
+                            
+                            <% if (data.length > 0) { %>
+                                <% for (let i=0; i<data.length; i++) { %> 
+                                    <tr>
+                                        <td><%= (i+1) %></td>
+                                        <td><%= data[i].fecha %></td>
+                                        <td><%= data[i].cliente %></td>
+                                        <td><%= data[i].habitacion %></td>
+                                        <td><%= data[i].dias %></td>
+                                        <td><%= data[i].precio %></td>
+                                        <td><%= data[i].por_pagar %></td>
+                                    </tr>
+                                <% } %>   
+                            <% } else { %>
+                                <tr>
+                                    <td colspan="6">NO HAY REGISTROS</td>
+                                </tr>
+                            <% } %>
+                            
+                        </table>
+                    </div>
+                    <div class="submit-cat">
+                        <fieldset>
+                            <legend>INGRESAR NUEVA FACTURA</legend>
+                            <form method="post" action="/cliente/add">
+                                <label>Nombre</label>
+                                <input type="text" name="nombre" placeholder="Nombre" required>
+                                <label>Apellidos</label>
+                                <input type="text" name="apellido" placeholder="Apellidos" required>
+                                <label>Cedula</label>
+                                <input type="text" name="cedula" placeholder="Cedula" required>
+                                <label>E-mail</label>
+                                <input type="text" name="email" placeholder="Apellidos" required>
+                                <button type="submit" name="accion" value="Añadir" class="boton boton-verde enviar">AGREGAR</button>
+                            </form>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+module.exports={factura:require('./factura_model')};
